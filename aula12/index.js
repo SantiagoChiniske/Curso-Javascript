@@ -2,10 +2,10 @@ let varA = 'A';
 let varB = 'B';
 let varC = 'C';
 
-varA = varB
-varB = varC
-varC = varA
+const varAtemp = varA
 
-console.log(varA)
-console.log(varB)
-console.log(varC)
+varA = varB // B
+varB = varC
+varC = varAtemp;
+
+console.log(varA ,varB, varC)
