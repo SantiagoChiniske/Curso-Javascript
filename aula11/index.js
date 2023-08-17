@@ -10,4 +10,4 @@ let num2 = parseInt(window.prompt('Digite segundo valor'))
 
 result = num1 + num2
 
-window.alert('O resultado foi '+ result)
+window.alert(`O resultado foi ${result} `);
