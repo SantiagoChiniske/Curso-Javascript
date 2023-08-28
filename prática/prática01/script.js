@@ -5,6 +5,8 @@ const resultado = document.getElementById('resultado')
 
 function conta(valor1,operadores,valor2){
  
-    switch(operadores)
+    switch(operadores):
+    case'1':
+    
 
 }
