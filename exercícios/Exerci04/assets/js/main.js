@@ -24,7 +24,7 @@ form.addEventListener('submit', function(event){
     const nivelImc = getNivelImc(imc);
 
     const msg = `Seu IMC é ${imc} (${nivelImc}).`;
-    setResultado(msg,true,nivelImc)
+    setResultado(msg,true)
 } );
 
 //Níveis do IMC
@@ -55,28 +55,17 @@ function criaP(){
 }
 
 //Ele seta o resultado
-function setResultado(msg,isValid,nivelImc){
+function setResultado(msg,isValid){
     const resultado = document.querySelector('.resultado');
     resultado.innerHTML = '';
        
 
     const p = criaP();//Cria um paragrafo
     //Verifica o resutado
-    if(isValid && nivelImc>=39 && nivelImc<34.9) {
-    return  p.classList.add('paragrafo-resultado-obeside03'); // Caso verdadeira cria essa classe
+    if(isValid ) {
+    p.classList.add('paragrafo-resultado'); // Caso verdadeira cria essa classe
 
-    }else if(isValid && nivelImc>=34.9 && nivelImc<29.9){
-        return  p.classList.add('paragrafo-resultado-obeside02');
-    }else if(isValid && nivelImc>=29.9 && nivelImc<24.9){
-        return  p.classList.add('paragrafo-resultado-obeside01');
-    }else if(isValid && nivelImc>=24.9  ){
-        return  p.classList.add('paragrafo-resultado-sobrepeso');
-    }else if(isValid && nivelImc>=18.5 ){
-        return  p.classList.add('paragrafo-resultado-peso-normal');
-    }else if(isValid && nivelImc<18.5 ){
-        return  p.classList.add('paragrafo-resultado-abaixo');
     }
-    
     else{
         p.classList.add('bad');//Caso falsa cria essa outra clase
     }
