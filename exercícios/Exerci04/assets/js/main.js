@@ -55,23 +55,29 @@ function criaP(){
 }
 
 //Ele seta o resultado
-function setResultado(msg,isValid,getNivelImc){
+function setResultado(msg,isValid,nivelImc){
     const resultado = document.querySelector('.resultado');
     resultado.innerHTML = '';
        
 
     const p = criaP();//Cria um paragrafo
     //Verifica o resutado
-    if(isValid) {
+    if(isValid && nivelImc>=39 && nivelImc<34.9) {
+    return  p.classList.add('paragrafo-resultado-obeside03'); // Caso verdadeira cria essa classe
 
-        if(getNivelImc >= 39) return  p.classList.add('paragrafo-resultado-obeside03'); // Caso verdadeira cria essa classe
-        if(getNivelImc >= 34.9) return  p.classList.add('paragrafo-resultado-obeside02');
-        if(getNivelImc >= 29.9) return  p.classList.add('paragrafo-resultado-obeside01');
-        if(getNivelImc >= 24.9) return  p.classList.add('paragrafo-resultado-sobrepeso');
-        if(getNivelImc >= 18.5) return  p.classList.add('paragrafo-resultado-peso-normal');
-        if(getNivelImc < 18.5) return  p.classList.add('paragrafo-resultado-abaixo');
-
-    }else{
+    }else if(isValid && nivelImc>=34.9 && nivelImc<29.9){
+        return  p.classList.add('paragrafo-resultado-obeside02');
+    }else if(isValid && nivelImc>=29.9 && nivelImc<24.9){
+        return  p.classList.add('paragrafo-resultado-obeside01');
+    }else if(isValid && nivelImc>=24.9  ){
+        return  p.classList.add('paragrafo-resultado-sobrepeso');
+    }else if(isValid && nivelImc>=18.5 ){
+        return  p.classList.add('paragrafo-resultado-peso-normal');
+    }else if(isValid && nivelImc<18.5 ){
+        return  p.classList.add('paragrafo-resultado-abaixo');
+    }
+    
+    else{
         p.classList.add('bad');//Caso falsa cria essa outra clase
     }
     p.innerHTML = msg;//inseri a mensagem
