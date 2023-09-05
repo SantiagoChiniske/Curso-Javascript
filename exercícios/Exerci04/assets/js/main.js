@@ -1,5 +1,6 @@
 const form = document.querySelector('.form');
 
+//Função principal
 form.addEventListener('submit', function(event){
     event.preventDefault();
     
@@ -23,9 +24,10 @@ form.addEventListener('submit', function(event){
     const nivelImc = getNivelImc(imc);
 
     const msg = `Seu IMC é ${imc} (${nivelImc}).`;
-    setResultado(msg,true)
+    setResultado(msg,true,nivelImc)
 } );
 
+//Níveis do IMC
 function getNivelImc(imc){
 
     const nivel = ['Abaixo do peso', 'Peso normal', 'Sobrepeso', 'Obesidade grau 1',
@@ -39,32 +41,40 @@ function getNivelImc(imc){
     if(imc <18.5)return nivel[0];
 }
 
+//CAlculo do IMC
 function getImc(peso,altura){
     const imc = peso/altura **2;
     return imc.toFixed(2);
 }
 
+//Cria um paragrafo
 function criaP(){
     const p = document.createElement('p'); // Cria um elemento HTML
     //p.classList.add('paragrafo-resultado') Colocar uma classe nele
     return p;
 }
 
-
-function setResultado(msg,isValid){
+//Ele seta o resultado
+function setResultado(msg,isValid,getNivelImc){
     const resultado = document.querySelector('.resultado');
     resultado.innerHTML = '';
-    
-    
+       
 
-    const p = criaP();
-
+    const p = criaP();//Cria um paragrafo
+    //Verifica o resutado
     if(isValid) {
-        p.classList.add('paragrafo-resultado');
+
+        if(getNivelImc >= 39) return  p.classList.add('paragrafo-resultado-obeside03'); // Caso verdadeira cria essa classe
+        if(getNivelImc >= 34.9) return  p.classList.add('paragrafo-resultado-obeside02');
+        if(getNivelImc >= 29.9) return  p.classList.add('paragrafo-resultado-obeside01');
+        if(getNivelImc >= 24.9) return  p.classList.add('paragrafo-resultado-sobrepeso');
+        if(getNivelImc >= 18.5) return  p.classList.add('paragrafo-resultado-peso-normal');
+        if(getNivelImc < 18.5) return  p.classList.add('paragrafo-resultado-abaixo');
+
     }else{
-        p.classList.add('bad');
+        p.classList.add('bad');//Caso falsa cria essa outra clase
     }
-    p.innerHTML = msg;
+    p.innerHTML = msg;//inseri a mensagem
     resultado.appendChild(p);
 
 }
