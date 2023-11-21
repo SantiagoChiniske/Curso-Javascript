@@ -8,4 +8,4 @@ const backgroudColorBody = estiloBody.backgroundColor;
 for (let p of ps){
     p.style.backgroundColor = backgroudColorBody;
     p.style.color = '#fff'
-}
+} 
